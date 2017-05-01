@@ -1,6 +1,8 @@
 <template lang="pug">
-  #app
+  #iaw
     Shell
+    main
+      router-view
 </template>
 
 <script>
@@ -22,5 +24,17 @@ export default {
 </script>
 
 <style lang="sass">
+  @import "./_sass/main.sass"
+  
+  main
+    display: flex
+    flex-wrap: wrap
+    flex-direction: row
+    min-height: calc(100vh - #{$header-height})
+    width: 100vw
+    position: relative
+    z-index: 9000
+    margin-top: $header-height
+    padding: $base-spacing
 
 </style>

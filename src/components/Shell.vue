@@ -22,11 +22,11 @@ export default {
     top: 0
     left: 0
     width: 100vw
-    height: 8vh
     border-bottom: 1px solid #000
     display: flex
     align-items: center
-    padding: 0 2vw
+    padding: 0 $base-spacing
+    height: $header-height
     h1
       +h1
 

@@ -12,24 +12,20 @@ html
 body
   font-size: $base-font-size
   overflow-x: hidden
+  overflow-y: scroll
+  position: fixed
+  top: 0
+  left: 0
   width: 100vw
-  min-height: 100vh
+  height: 100vh
   margin: 0
   padding: 0
-  background-color: $white
+  -webkit-overflow-scrolling: touch
   *
     @extend %border-box
+    font-family: $font
 
 // Content
-main
-  display: flex
-  flex-wrap: wrap
-  flex-direction: row
-  min-height: 100vh
-  width: 100vw
-  position: relative
-  z-index: 9000
-
 section
   position: relative
   z-index: 100
