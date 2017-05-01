@@ -1,0 +1,62 @@
+//-------------------------------------------------------------------
+//  Mixins
+//-------------------------------------------------------------------
+
+// Height Width
+=h-w-t-b-pos($height,$width,$top,$bottom,$position)
+  height: $height
+  width: $width
+  top: $top
+  bottom: $bottom
+  position: $position
+
+// Responsive
+$phablet-width: 800px
+
+=transition($transition-property, $transition-time, $method, $transition-delay: null)
+  transition: $transition-property $transition-time $method
+  transition-delay: $transition-delay
+
+=phabletup
+  @media (min-width: #{$phablet-width})
+    @content
+
+=full-window
+  height: 100vh
+  width: 100vw
+
+=full-bg
+  background-size: cover
+  background-position: center
+  background-repeat: no-repeat
+
+=flex-container
+  display: flex
+
+// Box Shadow
+=box-shadow($top: 0, $left: 0, $blur: 4, $color: rgba(0, 0, 0, 0.075), $inset: false)
+  @if $inset
+    -webkit-box-shadow: inset $top $left $blur $color
+    -moz-box-shadow: inset $top $left $blur $color
+    box-shadow: inset $top $left $blur $color
+  @else
+    -webkit-box-shadow: $top $left $blur $color
+    -moz-box-shadow: $top $left $blur $color
+    box-shadow: $top $left $blur $color
+
+=shadow
+  +box-shadow($top: 0, $left: 0, $blur: 6px, $color: rgba(0, 0, 0, 0.25), $inset: false)
+
+=monospace
+  font-family: Courier New, Courier, monospace
+  font-weight: 300
+  font-size: 1.5rem
+  color: $black
+  text-transform: uppercase
+  &:hover
+    color: red
+
+=h1
+  font-family: $font
+  font-size: 2.5vw
+  letter-spacing: .125vw

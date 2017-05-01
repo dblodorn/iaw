@@ -1,0 +1,41 @@
+//-------------------------------------------------------------------
+//  TOP LEVEL SELECTOR STYLING
+//-------------------------------------------------------------------
+
+html
+  font-size: 55%
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  +phabletup
+    font-size: 62.5%
+
+body
+  font-size: $base-font-size
+  overflow-x: hidden
+  width: 100vw
+  min-height: 100vh
+  margin: 0
+  padding: 0
+  background-color: $white
+  *
+    @extend %border-box
+
+// Content
+main
+  display: flex
+  flex-wrap: wrap
+  flex-direction: row
+  min-height: 100vh
+  width: 100vw
+  position: relative
+  z-index: 9000
+
+section
+  position: relative
+  z-index: 100
+
+// Image setup
+img
+  width: 100%
+  height: auto
+  margin-bottom: -3px

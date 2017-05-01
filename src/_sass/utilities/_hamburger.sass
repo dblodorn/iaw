@@ -1,0 +1,141 @@
+//-------------------------------------------------------------------
+// NAVIGATION UTILITY - HAMBURGER ICON
+//-------------------------------------------------------------------
+
+$transition-speed: .05s
+
+#trigger-overlay
+  background-color: rgba(0, 0, 0, 0)
+
+// Open Button
+.menu-button
+  position: absolute
+  z-index: $header-z + 100
+  top: 1.5rem
+  right: 1.5rem
+  display: -webkit-flex
+  display: -ms-flexbox
+  display: flex
+  -webkit-justify-content: space-between
+  -ms-flex-pack: justify
+  justify-content: space-between
+  -webkit-flex-wrap: wrap
+  -ms-flex-wrap: wrap
+  flex-wrap: wrap
+
+.menu-button-bg
+  width: calc(100vw - 15rem)
+  height: calc(7rem - 1px)
+  position: absolute
+  top: 0
+  right: 0
+  background-color: $white
+  z-index: $header-z + 99
+
+// TOGGLE SWITCH
+.cmn-toggle-switch
+  font-size: 0
+  position: relative
+  display: block
+  overflow: hidden
+  width: 42px
+  height: 40px
+  margin: 0
+  padding: 0
+  cursor: pointer
+  -webkit-transition: background $transition-speed
+  transition: background $transition-speed
+  text-indent: -9999px
+  border: none
+  border-radius: none
+  box-shadow: none
+  -webkit-appearance: none
+  -moz-appearance: none
+  appearance: none
+
+.cmn-toggle-switch:focus
+  outline: none
+
+.cmn-toggle-switch span
+  position: absolute
+  top: 19px
+  right: 4px
+  left: 4px
+
+  display: block
+
+  height: 2px
+
+  background: red
+
+.cmn-toggle-switch span::before,
+.cmn-toggle-switch span::after
+  position: absolute
+  left: 0
+
+  display: block
+
+  width: 100%
+  height: 2px
+
+  content: ''
+
+  background-color: red
+
+.cmn-toggle-switch span::before
+  top: -9px
+
+.cmn-toggle-switch span::after
+  bottom: -9px
+
+// HTX
+
+.cmn-toggle-switch__htx
+  background-color: rgba (255, 255, 255, 0) !important
+
+.cmn-toggle-switch__htx span
+  -webkit-transition: background 0s $transition-speed
+  transition: background 0s $transition-speed
+
+.cmn-toggle-switch__htx span::before,
+.cmn-toggle-switch__htx span::after
+  -webkit-transition-delay: $transition-speed, 0s
+  transition-delay: $transition-speed, 0s
+  -webkit-transition-duration: $transition-speed, $transition-speed
+  transition-duration: $transition-speed, $transition-speed
+
+.cmn-toggle-switch__htx span::before
+  -webkit-transition-property: top, -webkit-transform
+  transition-property: top, transform
+
+.cmn-toggle-switch__htx span::after
+  -webkit-transition-property: bottom, -webkit-transform
+  transition-property: bottom, transform
+
+// active state, i.e. menu open
+
+.nav-active
+  .cmn-toggle-switch__htx
+  //background-color: $dark-grey;
+
+  .cmn-toggle-switch__htx span
+    background: none
+
+  .cmn-toggle-switch__htx span::before
+    top: 0
+
+    -webkit-transform: rotate(45deg)
+    -ms-transform: rotate(45deg)
+    transform: rotate(45deg)
+
+  .cmn-toggle-switch__htx span::after
+    bottom: 0
+
+    -webkit-transform: rotate(-45deg)
+    -ms-transform: rotate(-45deg)
+    transform: rotate(-45deg)
+
+  .cmn-toggle-switch__htx span::before,
+  .cmn-toggle-switch__htx span::after
+    -webkit-transition-delay: 0s, $transition-speed
+    transition-delay: 0s, $transition-speed
