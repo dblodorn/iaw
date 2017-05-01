@@ -1,6 +1,9 @@
 <template lang="pug">
   header
-    h1 {{msg}}
+    router-link(to="/") {{msg}}
+    ul
+      li
+        router-link(to="story") Story 1
 </template>
 
 <script>
@@ -25,9 +28,11 @@ export default {
     border-bottom: 1px solid #000
     display: flex
     align-items: center
+    justify-content: space-between
     padding: 0 $base-spacing
     height: $header-height
-    h1
+    a
       +h1
+      +no-decoration-hover($blue)
 
 </style>

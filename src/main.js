@@ -5,17 +5,8 @@ Vue.use(VueRouter)
 
 import App from './App.vue'
 
-const Parent = {
-  template: `
-    <div class="parent">
-      <h2>Parent</h2>
-      <router-view class="child"></router-view>
-    </div>
-  `
-}
-
 const Default = { template: '<div>default</div>' }
-const Foo = { template: '<div>foo</div>' }
+const Foo = { template: '<div><p>foo</p></div>' }
 
 const router = new VueRouter({
   mode: 'history',
@@ -23,7 +14,7 @@ const router = new VueRouter({
     { path: '/', component: App,
       children: [
         { path: '', component: Default },
-        { path: 'foo', component: Foo }
+        { path: 'story', component: Foo }
       ]
     }
   ]
