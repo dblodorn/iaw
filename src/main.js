@@ -1,20 +1,30 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
+Vue.use(VueAxios, axios)
 Vue.use(VueRouter)
 
 import App from './App.vue'
+import Home from './components/Home.vue'
+import Story from './components/Story.vue'
 
-const Default = { template: '<div>default</div>' }
-const Foo = { template: '<div><p>foo</p></div>' }
+const Foo = { template: '<section><h1>STORY {{ $route.params.id }}</h1></section>' }
 
 const router = new VueRouter({
   mode: 'history',
   routes: [
     { path: '/', component: App,
       children: [
-        { path: '', component: Default },
-        { path: 'story', component: Foo }
+        { 
+          path: '',
+          component: Home 
+        },
+        { 
+          path: 'story/:id',
+          component: Story 
+        }
       ]
     }
   ]

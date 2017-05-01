@@ -3,7 +3,7 @@
     router-link(to="/") {{msg}}
     ul
       li
-        router-link(to="story") Story 1
+        router-link(to="/story/vets") Vets
 </template>
 
 <script>

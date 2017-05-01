@@ -35,6 +35,5 @@ export default {
     position: relative
     z-index: 9000
     margin-top: $header-height
-    padding: $base-spacing
 
 </style>
