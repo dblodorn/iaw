@@ -31,6 +31,8 @@ export default {
     justify-content: space-between
     padding: 0 $base-spacing
     height: $header-height
+    background: $white
+    z-index: 10000
     a
       +h1
       +no-decoration-hover($blue)
