@@ -23,7 +23,8 @@ export default {
         { nl: 'race' },
         { nl: 'education' },
         { nl: 'shelters' },
-        { nl: 'access' }
+        { nl: 'access' },
+        { nl: 'water' }
       ]
     }
   }
