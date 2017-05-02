@@ -1,9 +1,6 @@
 <template lang="pug">
   header
     router-link(to="/") {{msg}}
-    ul
-      li
-        router-link(to="/story/vets") Vets
 </template>
 
 <script>
@@ -31,10 +28,10 @@ export default {
     justify-content: space-between
     padding: 0 $base-spacing
     height: $header-height
-    background: $white
+    background: $blue
     z-index: 10000
     a
       +h1
-      +no-decoration-hover($blue)
+      +no-decoration-hover($white)
 
 </style>

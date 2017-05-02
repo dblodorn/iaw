@@ -1,7 +1,10 @@
 <template lang="pug">
-  ul#landing
-    li(v-for="item in nav_items")
-      router-link(v-bind:to="'/story/' + item.nl") {{ item.nl }}
+  #landing
+    .search-wrapper
+      input(type="text" v-model="search" placeholder="Find your word…")
+    ul.landing-links
+      li(v-for="item in filteredItems")
+        router-link(v-bind:to="'/story/' + item.nl") {{ item.nl }}
 </template>
 
 <script>
@@ -9,7 +12,8 @@ export default {
   name: 'home',
   data () {
     return {
-      nav_items: [
+      search: '',
+      items: [
         { nl: 'love' },
         { nl: 'hope' },
         { nl: 'peace' },
@@ -27,28 +31,55 @@ export default {
         { nl: 'water' }
       ]
     }
+  },
+  computed: {
+    filteredItems() {
+      return this.items.filter(item => {
+         return item.nl.indexOf(this.search.toLowerCase()) > -1
+      })
+    }
   }
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
   @import "../_sass/utilities/_utilities.sass"
-  
-  ul#landing
+  .search-wrapper
+    margin-top: $header-height
+    border-bottom: $border
+    padding: $base-spacing
+    position: fixed
+    top: 0
+    left: 0
+    width: 100vw
+    background: $white
+    z-index: 9000
+    input
+      +h1
+      +no-decoration-hover($blue)
+      -webkit-appearance: none
+      border: 0
+      padding: 0
+      caret-color: $dk-grey
+      text-transform: capitalize
+      &::placeholder
+        color: $blue
+
+  ul.landing-links
+    margin-top: calc(#{$header-height} + 3vh)
     position: relative
     width: 100vw
-    height: calc(100vh - #{$header-height})
-    display: flex
-    flex-direction: row
-    flex-wrap: wrap
+    min-height: calc(100vh - #{$header-height})
     li
-      width: 100%
-      height: 25%
+      width: 100vw
       padding: $base-spacing
       border-bottom: $border
+      display: block
+      align-items: center
+      position: relative
     a
       +h1
-      +no-decoration-hover(red)
-      text-transform: uppercase
+      +no-decoration-hover($blue)
+      text-transform: capitalize
 
 </style>
