@@ -47,7 +47,7 @@ export default {
       border-bottom: $border
     a
       +h1
-      +no-decoration-hover($blue)
+      +no-decoration-hover(red)
       text-transform: uppercase
 
 </style>
