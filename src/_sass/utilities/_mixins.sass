@@ -62,9 +62,10 @@ $phablet-width: 800px
   font-family: $font
   font-size: $base-spacing * 2
   letter-spacing: $base-spacing / 8
+  font-weight: 400
 
-=no-decoration-hover($color : $type-color)
+=no-decoration-hover($color : $type-color, $hover-color : $lt-grey)
   text-decoration: none
   color: $color
   &:hover
-    color: darken($color, 10%)
+    color: $hover-color

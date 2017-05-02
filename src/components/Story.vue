@@ -38,9 +38,7 @@ export default {
       console.log(id)
       this.axios.get('/assets/data/' + id + '.json').then((response) => {
         this.post = response.data
-        setTimeout(() => {
-          this.loading = false
-        }, 1000)
+        this.loading = false
       },(errorResponse) => {
         this.loading = false
         this.error = 'Error: ' + errorResponse.response.status
