@@ -36,7 +36,7 @@ export default {
     report: function () {
       let searchValue = this.search
       const links = this.items.filter(item => {
-         return item.nl.indexOf(this.search.toLowerCase()) > -1
+        return item.nl.indexOf(this.search.toLowerCase()) > -1
       })
       if (links.length = 1) {
         this.$router.push({ path: '/story/' + links[0].nl })
