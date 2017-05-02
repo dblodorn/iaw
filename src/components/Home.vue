@@ -1,7 +1,7 @@
 <template lang="pug">
   #landing
     .search-wrapper
-      input(type="text" v-model="search" placeholder="Find your word…")
+      input(type="text" v-model="search" placeholder="Find your word…" @keyup.enter="report")
     ul.landing-links
       li(v-for="item in filteredItems")
         router-link(v-bind:to="'/story/' + item.nl") {{ item.nl }}
@@ -14,22 +14,33 @@ export default {
     return {
       search: '',
       items: [
-        { nl: 'love' },
-        { nl: 'hope' },
-        { nl: 'peace' },
-        { nl: 'dream' },
-        { nl: 'children' },
-        { nl: 'families' },
-        { nl: 'veterans' },
-        { nl: 'elderly' },
-        { nl: 'invisible' },
-        { nl: 'employment' },
-        { nl: 'race' },
-        { nl: 'education' },
-        { nl: 'shelters' },
         { nl: 'access' },
+        { nl: 'children' },
+        { nl: 'dream' },
+        { nl: 'education' },
+        { nl: 'elderly' },
+        { nl: 'employment' },
+        { nl: 'families' },
+        { nl: 'hope' },
+        { nl: 'invisible' },
+        { nl: 'love' },
+        { nl: 'peace' },
+        { nl: 'race' },
+        { nl: 'shelters' },
+        { nl: 'veterans' },
         { nl: 'water' }
       ]
+    }
+  },
+  methods: {
+    report: function () {
+      let searchValue = this.search
+      const links = this.items.filter(item => {
+         return item.nl.indexOf(this.search.toLowerCase()) > -1
+      })
+      if (links.length = 1) {
+        this.$router.push({ path: '/story/' + links[0].nl })
+      }
     }
   },
   computed: {
