@@ -6,7 +6,9 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "deploy": "gulp deploy",
+    "ftp": "gulp deploy --user $FTP_USER --password $FTP_PASSWORD"
   },
   "dependencies": {
     "axios": "^0.16.1",
@@ -21,12 +23,19 @@
     "cross-env": "^3.0.0",
     "css-loader": "^0.25.0",
     "file-loader": "^0.9.0",
+    "fs": "0.0.1-security",
+    "gulp": "^3.9.1",
+    "gulp-npm-script-sync": "^1.1.0",
+    "gulp-util": "^3.0.8",
+    "minimist": "^1.2.0",
     "node-sass": "^4.5.0",
     "pug": "^2.0.0-beta.12",
     "sass-loader": "^5.0.1",
+    "vinyl-ftp": "^0.6.0",
     "vue-loader": "^11.1.4",
     "vue-template-compiler": "^2.2.1",
     "webpack": "^2.2.0",
-    "webpack-dev-server": "^2.2.0"
+    "webpack-dev-server": "^2.2.0",
+    "webpack-shell-plugin": "^0.5.0"
   }
 }

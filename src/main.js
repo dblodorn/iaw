@@ -10,8 +10,6 @@ import App from './App.vue'
 import Home from './components/Home.vue'
 import Story from './components/Story.vue'
 
-const Foo = { template: '<section><h1>STORY {{ $route.params.id }}</h1></section>' }
-
 const router = new VueRouter({
   mode: 'history',
   routes: [

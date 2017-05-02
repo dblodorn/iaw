@@ -1,0 +1,7 @@
+{
+  "host": "14-forty.com",
+  "remoteFolder": "domains/iaw.14-forty.com/html/",
+  "dist_folder": "../dist/**/*",
+  "assets_folder": "../assets/**/*",
+  "index_file": "../index.html"
+}

@@ -1,5 +1,6 @@
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path')
+const webpack = require('webpack')
+const WebpackShellPlugin = require('webpack-shell-plugin')
 
 module.exports = {
   entry: './src/main.js',
@@ -19,7 +20,6 @@ module.exports = {
             'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
             'html': 'pug'
           }
-          // other vue-loader options go here
         }
       },
       {
@@ -62,7 +62,6 @@ module.exports = {
 
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'
-  // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
@@ -77,6 +76,15 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
+    }),
+    new WebpackShellPlugin({
+      onBuildStart:[
+        'echo "Webpack Run"'
+      ],
+      onBuildEnd:[
+        'npm run ftp',
+        'echo "Webpack Done"'
+      ]
     })
   ])
 }
