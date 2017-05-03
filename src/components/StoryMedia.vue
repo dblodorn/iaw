@@ -6,11 +6,15 @@
 </template>
 
 <script>
+import $ from 'jquery'
 export default {
   name: 'story-media',
   props: ['media'],
   data () {
     return {}
+  },
+  mounted: function () {
+    $("#audio-player").trigger('play')
   }
 }
 </script>
