@@ -1,34 +1,28 @@
 <template lang="pug">
   #media-component
-    aside#bg-image(:style="{ 'background-image': 'url(' + media.background + ')' }")
-    audio#audio-player(controls autoplay)
-      source(v-bind:src="media.audio")
+    aside#bg-image(v-if="media.background" :style="{ 'background-image': 'url(' + media.background + ')' }")
+    AudioPlayer(v-if="media.audio" v-bind:audiosrc="media.audio")
+    VideoPlayer(v-if="media.video" v-bind:videosrc="media.video")
 </template>
 
 <script>
-import $ from 'jquery'
-export default {
-  name: 'story-media',
-  props: ['media'],
-  data () {
-    return {}
-  },
-  mounted: function () {
-    $("#audio-player").trigger('play')
+  import AudioPlayer from './AudioPlayer.vue'
+  import VideoPlayer from './VideoPlayer.vue'
+  export default {
+    name: 'story-media',
+    props: ['media'],
+    components: {
+      AudioPlayer,
+      VideoPlayer
+    },
+    mounted: function () {
+      console.log('mounted media component')
+    }
   }
-}
 </script>
 
 <style lang="sass" scoped>
   @import "../_sass/utilities/_utilities.sass"
-  
-  audio
-    position: fixed
-    bottom: 0
-    width: 100vw
-    z-index: 9000
-
   aside#bg-image
     +bg-image
-
 </style>
