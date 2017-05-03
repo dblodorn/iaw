@@ -2,6 +2,7 @@
   "articleclass": "left",
   "subhead": "Access is a five letter word...",
   "copy": "Lorem ipsum dolor sit amet.",
+  "media": "true",
   "background": "https://s3-us-west-2.amazonaws.com/14-forty/iaw/homeless-tents.jpg",
   "audio": "https://s3-us-west-2.amazonaws.com/14-forty/iaw/iaw-veterans.mp3"
 }
