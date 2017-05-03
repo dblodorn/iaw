@@ -1,5 +1,8 @@
 <template lang="pug">
-  aside#bg-image(:style="{ 'background-image': 'url(' + media.background + ')' }")
+  #media-component
+    aside#bg-image(:style="{ 'background-image': 'url(' + media.background + ')' }")
+    audio#audio-player(controls autoplay)
+      source(v-bind:src="media.audio")
 </template>
 
 <script>
@@ -12,18 +15,16 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
   @import "../_sass/utilities/_utilities.sass"
   
-  aside
-    height: calc(100vh - #{$header-height})
+  audio
     position: fixed
-    top: $header-height
-    left: 0
+    bottom: 0
     width: 100vw
-    z-index: 0
-    background-size: cover
-    background-position: center
-    background-repeat: no-repeat
+    z-index: 9000
+
+  aside#bg-image
+    +bg-image
 
 </style>
