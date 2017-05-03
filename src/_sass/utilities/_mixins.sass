@@ -56,6 +56,17 @@ $phablet-width: 800px
   &:hover
     color: red
 
+=bg-image
+  height: calc(100vh - #{$header-height})
+  position: fixed
+  top: $header-height
+  left: 0
+  width: 100vw
+  z-index: 0
+  background-size: cover
+  background-position: center
+  background-repeat: no-repeat
+
 // Type
 
 =din($weight : light)
@@ -81,3 +92,34 @@ $phablet-width: 800px
   color: $color
   &:hover
     color: $hover-color
+
+=close-x($color : $red)
+  content: ''
+  border-left: 1px solid $color
+  height: 70%
+
+=close-btn($hw : $header-height, $close : false)
+  height: $hw
+  width: $hw
+  border-left: $border
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+  cursor: pointer
+  overflow: hidden
+  &:before
+    +close-x
+    transform: rotate(90deg)
+  &:after
+    +close-x
+    transform: rotate(0deg)
+  &:hover
+    &:before,
+    &:after
+      border-color: $lt-grey
+  @if $close == true
+    &:before
+      transform: rotate(45deg)
+    &:after
+      transform: rotate(-45deg)

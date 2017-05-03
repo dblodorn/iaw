@@ -1,96 +1,69 @@
 <template lang="pug">
-  #landing
-    .search-wrapper
-      input(type="text" v-model="search" placeholder="Find your word…" @keyup.enter="report")
-    ul.landing-links
-      li(v-for="item in filteredItems")
-        router-link(v-bind:to="'/story/' + item.nl") {{ item.nl }}
+  section#landing
+    SearchDrawer
+    ul#bottles
+      li(v-for="item in bottles")
+        router-link(:style="{ 'background-image': 'url(' + item.btl + ')' }" v-bind:to="'/story/' + item.link")
 </template>
 
 <script>
+import SearchDrawer from './SearchDrawer.vue'
 export default {
   name: 'home',
+  components: {
+    SearchDrawer
+  },
   data () {
     return {
-      search: '',
-      items: [
-        { nl: 'access' },
-        { nl: 'children' },
-        { nl: 'dream' },
-        { nl: 'education' },
-        { nl: 'elderly' },
-        { nl: 'employment' },
-        { nl: 'families' },
-        { nl: 'hope' },
-        { nl: 'invisible' },
-        { nl: 'love' },
-        { nl: 'peace' },
-        { nl: 'race' },
-        { nl: 'shelters' },
-        { nl: 'veterans' },
-        { nl: 'water' }
+      bottles: [
+        { 
+          btl: 'https://s3-us-west-2.amazonaws.com/14-forty/iaw/bottle-hope.jpg',
+          link: 'hope'
+        },
+        { 
+          btl: 'https://s3-us-west-2.amazonaws.com/14-forty/iaw/bottle-dream.jpg',
+          link: 'dream'
+        },
+        { 
+          btl: 'https://s3-us-west-2.amazonaws.com/14-forty/iaw/bottle-peace.jpg',
+          link: 'peace'
+        },
+        { 
+          btl: 'https://s3-us-west-2.amazonaws.com/14-forty/iaw/bottle-love.jpg',
+          link: 'love'
+        }
       ]
-    }
-  },
-  methods: {
-    report: function () {
-      let searchValue = this.search
-      const links = this.items.filter(item => {
-        return item.nl.indexOf(this.search.toLowerCase()) > -1
-      })
-      if (links.length = 1) {
-        this.$router.push({ path: '/story/' + links[0].nl })
-      }
-    }
-  },
-  computed: {
-    filteredItems() {
-      return this.items.filter(item => {
-         return item.nl.indexOf(this.search.toLowerCase()) > -1
-      })
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
+  
   @import "../_sass/utilities/_utilities.sass"
-  .search-wrapper
-    margin-top: $header-height
-    border-bottom: $border
-    padding: $base-spacing
+  
+  ul#bottles
+    width: 100vw
+    height: $full-height
     position: fixed
-    top: 0
+    top: $header-height
     left: 0
-    width: 100vw
-    background: $white
-    z-index: 9000
-    input
-      +h1
-      +no-decoration-hover($blue)
-      -webkit-appearance: none
-      border: 0
-      padding: 0
-      caret-color: $dk-grey
-      text-transform: capitalize
-      &::placeholder
-        color: $blue
-
-  ul.landing-links
-    margin-top: calc(#{$header-height} + 3vh)
-    position: relative
-    width: 100vw
-    min-height: calc(100vh - #{$header-height})
+    display: flex
+    flex-direction: row
     li
-      width: 100vw
-      padding: $base-spacing
-      border-bottom: $border
-      display: block
-      align-items: center
-      position: relative
-    a
-      +h1
-      +no-decoration-hover($blue)
-      text-transform: capitalize
+      width: 25%
+      height: inherit
+      a
+        width: 100%
+        height: 100%
+        display: block
+        background-position: center
+        background-repeat: no-repeat
+        background-size: 70%
+        cursor: pointer
+      &:hover
+        a
+          background-blend-mode: multiply
+          background-color: $red
 
 </style>

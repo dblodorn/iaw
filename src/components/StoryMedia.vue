@@ -12,18 +12,10 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
   @import "../_sass/utilities/_utilities.sass"
   
-  aside
-    height: calc(100vh - #{$header-height})
-    position: fixed
-    top: $header-height
-    left: 0
-    width: 100vw
-    z-index: 0
-    background-size: cover
-    background-position: center
-    background-repeat: no-repeat
+  aside#bg-image
+    +bg-image
 
 </style>
