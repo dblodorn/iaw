@@ -1,6 +1,10 @@
 <template lang="pug">
   header
-    router-link(to="/") {{msg}}
+    ul
+      li
+        router-link(to="/") {{title}}
+      li
+        router-link(to="/donate") {{donate}}
 </template>
 
 <script>
@@ -8,7 +12,8 @@ export default {
   name: 'shell',
   data () {
     return {
-      msg: 'I AM WATERS'
+      title: 'I Am Waters',
+      donate: 'Donate'
     }
   }
 }
@@ -23,15 +28,25 @@ export default {
     left: 0
     width: 100vw
     border-bottom: 1px solid #000
-    display: flex
-    align-items: center
-    justify-content: space-between
-    padding: 0 $base-spacing
+    
+    padding: 0
     height: $header-height
     background: $blue
     z-index: 10000
     a
       +h1
       +no-decoration-hover($white)
+    ul
+      display: flex
+      flex-direction: row
+      width: 100vw
+      height: 100%
+      li
+        width: 50%
+        display: flex
+        padding: 0 $base-spacing
+        align-items: center
+        &:last-child
+          border-left: $border
 
 </style>

@@ -5,17 +5,19 @@
     div(v-if="error" class="error") 
       h1 {{ error }}
     div(v-if="post" class="content")
-      h1 {{ $route.params.id }}
-      StoryText(v-bind:message="post")
+      StoryText(v-bind:text="post")
+      StoryMedia(v-bind:media="post")
 </template>
 
 <script>
 import StoryText from './StoryText.vue'
+import StoryMedia from './StoryMedia.vue'
 
 export default {
   name: 'story',
   components: {
-    StoryText
+    StoryText,
+    StoryMedia
   },
   data () {
     return {
@@ -52,6 +54,11 @@ export default {
 <style lang="sass">
   @import "../_sass/utilities/_utilities.sass"
   
+  .content
+    display: flex
+    width: 100vw
+    flex-direction: column
+
   section,
   #loading
     position: relative
@@ -60,11 +67,6 @@ export default {
     display: flex
     flex-direction: row
     flex-wrap: wrap
-    padding: $base-spacing
-    h1
-      +h1
-      color: $blue
-      text-transform: uppercase
 
     #loading
       background-color: $blue
