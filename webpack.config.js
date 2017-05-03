@@ -57,6 +57,9 @@ module.exports = {
   performance: {
     hints: false
   },
+  externals: {
+    "jquery": "$"
+  },
   devtool: '#eval-source-map'
 }
 

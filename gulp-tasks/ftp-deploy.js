@@ -6,7 +6,8 @@ module.exports = function ( gulp, ftp, minimist ) {
   const globs = [
           'dist/**',
           'index.html',
-          'assets/**'
+          'assets/**',
+          '.htaccess'
         ],
         remoteFolder = config.remoteFolder;
 

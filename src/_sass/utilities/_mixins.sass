@@ -58,8 +58,20 @@ $phablet-width: 800px
 
 // Type
 
+=din($weight : light)
+  font-family: $din
+  font-style: normal
+  @if $weight == light
+    font-weight: 300
+  @else if $weight == regular
+    font-weight: 400
+  @else if $weight == bold
+    font-weight: 700
+  @else
+    font-weight: 300
+
 =h1
-  font-family: $font
+  +din(regular)
   font-size: $base-spacing * 2
   letter-spacing: $base-spacing / 8
   font-weight: 400
