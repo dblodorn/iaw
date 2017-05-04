@@ -38,7 +38,7 @@
         this.loading = true
         let id = this.$route.params.id
         console.log(id)
-        this.axios.get('https://dblodorn.github.io/iaw-data/data/' + id + '.json').then((response) => {
+        this.axios.get('../assets/data/' + id + '.json').then((response) => {
           this.post = response.data
           this.loading = false
         },(errorResponse) => {
