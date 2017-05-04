@@ -1,12 +1,12 @@
 <template lang="pug">
-  video(v-bind:id="'video-' + index")
-    source(v-bind:src="videosrc.src")
+  video(:id="'video-' + index" :style="{ transitionDuration: transitionLength + 'ms' }" preload="auto")
+    source(:src="videosrc.src")
 </template>
 
 <script>
   export default {
     name: 'video-player',
-    props: ['videosrc','index'],
+    props: ['videosrc','index','transitionLength'],
     data () {
       return {}
     },
@@ -17,9 +17,10 @@
 </script>
 
 <style lang="sass" scoped>
-  @import "../_sass/utilities/_utilities.sass"
-
+  
   video
+    transition-property: opacity
+    transition-timing-function: ease
     opacity: 0
   
   .video-visible

@@ -2,11 +2,11 @@
   #media-component
     aside#bg-image(v-if="media.background" :style="{ 'background-image': 'url(' + media.background + ')' }")
     AudioPlayer(v-if="media.audio" :audiosrc="media.audio")
-    ul#video-sequence-player(v-if="media.video_player == 'sequence'")
+    ul#video-sequence-player(v-if="media.video_player == 'video-sequence'" :data-transition-length="media.transition_time")
       li.video-container(v-for="(video, index) in media.videos" :id="'video-frame-' + index")
-        VideoPlayer(:videosrc="video" :index="index")
-    #video-loop-player.video-container(v-if="media.video_player == 'loop'")
-      VideoPlayer(:videosrc="video" :index="index")
+        VideoPlayer(:videosrc="video" :index="index" :transitionLength="media.transition_time")
+    #video-loop-player.video-container(v-if="media.video_player == 'video-loop'")
+      VideoPlayerLoop(:videosrc="media.video_src")
 </template>
 
 <script>
@@ -23,46 +23,61 @@
       VideoPlayerLoop
     },
     mounted: function () {
-      console.log('mounted media component')
-      
       // MEDIA OBJECTS
       const videoLoop = document.getElementById('video-loop')
       const videoSequence = document.getElementById('video-sequence-player')
-      
-      // Video Sequence
+      // Video Sequence Function
       if(videoSequence) {
-        let i = 0
+        // Globals for Video Player Instance
         const videoCount = document.querySelectorAll('.video-container').length
-        
+        const videoOne = document.getElementById('video-1')
+        const transitionTime = videoSequence.dataset.transitionLength
+        let i = 0
+        // Roll The Sequence
+        const rollVideo = () => {
+          videoOne.addEventListener('loadeddata', function() {
+            if (videoOne.readyState === 4) {
+              setTimeout(() => {
+                videoPlayOnce()
+              }, 50)
+            }
+          })
+        }
+        // CoreVideoTrigger
         const videoPlayOnce = () => {
           let video = document.getElementById('video-' + i)
-          video.classList.add('video-visible')
-          video.play()
-          setTimeout(() => {
-            console.log('playing video ' + i + ' its duration is ' + video.duration)
-          }, 5)
+              video.classList.add('video-visible')
+              video.play()
+          // Duration Controls
+          let videoNext = document.getElementById('video-' + (i + 1)),
+              videoDuration = video.duration,
+              videoMs = Math.floor(videoDuration * 1000),
+              videoGap = videoMs - transitionTime
           if (i === (videoCount - 1)) {
             i = 0
+            videoNext = videoOne
           } else {
             i++
+            videoNext = videoNext
           }
-          video.onended = () => {
-            video.classList.remove('video-visible')
+          setTimeout(() => {
+            videoNext.classList.add('video-visible')
             videoPlayOnce()
-          }
+          }, (videoGap - transitionTime))  
+          setTimeout(() => {
+            video.classList.remove('video-visible')
+          }, videoGap)
+          // Console:
+          // console.log('playing video ' + i + ' its duration is ' + videoMs + ' in milliseconds')
         }
-        videoPlayOnce()
+        rollVideo()
       }
 
-      // Video Loop
+      // Video Loop Function
       if(videoLoop) {
-        const video = videoLoop
-        const videoPlayLoop = () => {
-          video.play()
-        }
-        videoPlayLoop()
+        const videoLoopPlay = () => { videoLoop.play() }
+        videoLoopPlay()
       }
-
 
     }
   }

@@ -1,6 +1,6 @@
 <template lang="pug">
   video#video-loop(loop)
-    source(v-bind:src="videosrc.src")
+    source(v-bind:src="videosrc")
 </template>
 
 <script>
