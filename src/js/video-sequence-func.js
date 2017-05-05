@@ -41,20 +41,19 @@ export default function videoSequenceFunc (videoSequenceObj) {
       i++
       videoNext = videoNext
     }
-   
-    let transitionTimer
 
-    transitionTimer.push(
+    // Clear This on leave
+    let transitionTimer = () => {
       setTimeout(() => {
         videoNext.classList.add('video-visible')
         videoPlayOnce()
-        console.log('target')
-      }, (videoGap - transitionTime))  
-      
+      }, (videoGap - transitionTime))
       setTimeout(() => {
         video.classList.remove('video-visible')
       }, videoGap)
-    )
-  }
+    }
+    
+    transitionTimer()
+}
   rollVideo()
 }
