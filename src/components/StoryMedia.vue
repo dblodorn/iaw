@@ -13,7 +13,8 @@
   import AudioPlayer from './AudioPlayer.vue'
   import VideoPlayer from './VideoPlayer.vue'
   import VideoPlayerLoop from './VideoPlayerLoop.vue'
-  
+  // JS
+  import videoSequenceFunc from '../js/video-sequence-func'
   export default {
     name: 'story-media',
     props: ['media'],
@@ -26,59 +27,23 @@
       // MEDIA OBJECTS
       const videoLoop = document.getElementById('video-loop')
       const videoSequence = document.getElementById('video-sequence-player')
-      // Video Sequence Function
-      if(videoSequence) {
-        // Globals for Video Player Instance
-        const videoCount = document.querySelectorAll('.video-container').length
-        const videoOne = document.getElementById('video-1')
-        const transitionTime = videoSequence.dataset.transitionLength
-        let i = 0
-        // Roll The Sequence
-        const rollVideo = () => {
-          videoOne.addEventListener('loadeddata', function() {
-            if (videoOne.readyState === 4) {
-              setTimeout(() => {
-                videoPlayOnce()
-              }, 50)
-            }
-          })
-        }
-        // CoreVideoTrigger
-        const videoPlayOnce = () => {
-          let video = document.getElementById('video-' + i)
-              video.classList.add('video-visible')
-              video.play()
-          // Duration Controls
-          let videoNext = document.getElementById('video-' + (i + 1)),
-              videoDuration = video.duration,
-              videoMs = Math.floor(videoDuration * 1000),
-              videoGap = videoMs - transitionTime
-          if (i === (videoCount - 1)) {
-            i = 0
-            videoNext = videoOne
-          } else {
-            i++
-            videoNext = videoNext
-          }
-          setTimeout(() => {
-            videoNext.classList.add('video-visible')
-            videoPlayOnce()
-          }, (videoGap - transitionTime))  
-          setTimeout(() => {
-            video.classList.remove('video-visible')
-          }, videoGap)
-          // Console:
-          // console.log('playing video ' + i + ' its duration is ' + videoMs + ' in milliseconds')
-        }
-        rollVideo()
-      }
 
-      // Video Loop Function
-      if(videoLoop) {
-        const videoLoopPlay = () => { videoLoop.play() }
-        videoLoopPlay()
-      }
+      setTimeout(() => {  
+        if(videoSequence) { 
+          videoSequenceFunc(videoSequence)
+        }
+      }, 25)
 
+      setTimeout(() => {
+        if(videoLoop) {
+          const videoLoopPlay = () => { videoLoop.play() }
+          videoLoopPlay() 
+        }
+      }, 25)
+
+    },
+    destroyed: function () {
+      console.log('component destroyed')
     }
   }
 </script>

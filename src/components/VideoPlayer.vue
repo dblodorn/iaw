@@ -1,5 +1,5 @@
 <template lang="pug">
-  video(:id="'video-' + index" :style="{ transitionDuration: transitionLength + 'ms' }" preload="auto")
+  video(:id="'video-' + index" :style="{ transitionDuration: transitionLength + 'ms' }")
     source(:src="videosrc.src")
 </template>
 
