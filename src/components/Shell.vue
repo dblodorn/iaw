@@ -1,19 +1,31 @@
 <template lang="pug">
-  header
-    ul
-      li
-        router-link(to="/") {{title}}
-      li
-        router-link(to="/donate") {{donate}}
+  #app-shell
+    header
+      ul
+        li(v-on:click="classRemove")
+          router-link(to="/") {{title}}
+        li(v-on:click="classRemove")
+          router-link(to="/donate") {{donate}}
+    SearchDrawer
 </template>
 
 <script>
+import SearchDrawer from './SearchDrawer.vue'
+import $ from 'jquery'
 export default {
   name: 'shell',
+  components: {
+    SearchDrawer
+  },
   data () {
     return {
       title: 'I Am Waters',
       donate: 'Donate'
+    }
+  },
+  methods: {
+    classRemove: function (event) {
+      $('#search-drawer').removeClass('opened')
     }
   }
 }
@@ -22,6 +34,15 @@ export default {
 <style lang="sass">
   @import "../_sass/utilities/_utilities.sass"
   
+  #app-shell
+    position: fixed
+    width: 100vw
+    height: 100vh
+    top: 0
+    left: 0
+    overflow: hidden
+    z-index: 10000
+    
   header
     position: fixed
     top: 0
