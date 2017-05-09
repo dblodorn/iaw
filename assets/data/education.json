@@ -2,15 +2,19 @@
   "subhead": "Education is a five letter word...",
   "copy": "Lorem ipsum dolor sit amet. The Education is an important factor.",
   "media": "true",
-  "media_player": "video-sequence",
+  "media_player": "multi-media-sequence",
   "transition_time": "1250",
-  "videos": [
+  "sequence": [
     {
+      "type": "video",
       "src": "https://s3-us-west-2.amazonaws.com/14-forty/iaw/ally-long.mp4"
     },{
-      "src": "https://s3-us-west-1.amazonaws.com/db13/satisfying/sv-01.mp4"
+      "type": "static",
+      "title": "Slide 2",
+      "copy": "Lorem Ipsum Dolor dodladfsfsdfa."
     },{
-      "src": "https://s3-us-west-1.amazonaws.com/db13/satisfying/sv-03.mp4"
+      "type": "video",
+      "src": "https://s3-us-west-1.amazonaws.com/db13/satisfying/sv-01.mp4"
     }
   ]
 }

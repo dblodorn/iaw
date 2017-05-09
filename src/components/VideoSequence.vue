@@ -18,13 +18,16 @@
       return {}
     },
     mounted: function () {
-      console.log('video mounted')
+      console.log('video sequence mounted')
       const videoSequence = document.getElementById('video-sequence-player')
       setTimeout(() => {  
         if(videoSequence) { 
           videoSequenceFunc(videoSequence)
         }
       }, 25)
+    },
+    destroyed: function () {
+      console.log('video sequence destroyed')
     }
   }
 </script>
