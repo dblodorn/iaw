@@ -1,6 +1,7 @@
 <template lang="pug">
-  video#video-loop(loop)
-    source(v-bind:src="videosrc")
+  section#video-loop-player.video-container
+    video#video-loop(loop)
+      source(v-bind:src="videosrc")
 </template>
 
 <script>
@@ -11,7 +12,13 @@
       return {}
     },
     mounted: function () {
-      console.log('video loop mounted')
+      const videoLoop = document.getElementById('video-loop')
+      setTimeout(() => {
+        if(videoLoop) {
+          const videoLoopPlay = () => { videoLoop.play() }
+          videoLoopPlay() 
+        }
+      }, 25)
     }
   }
 </script>
