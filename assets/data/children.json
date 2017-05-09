@@ -2,7 +2,7 @@
   "subhead": "Chilren is a five letter word...",
   "copy": "Lorem ipsum dolor sit amet. The Children are our future...omg",
   "media": "true",
-  "video_player": "video-sequence",
+  "media_player": "video-sequence",
   "transition_time": "1250",
   "videos": [
     {
