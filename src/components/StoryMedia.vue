@@ -34,10 +34,36 @@
   }
 </script>
 
-<style lang="sass" scoped>
-  @import "../_sass/utilities/_utilities.sass"
+<style lang="sass">
+  @import "../_sass/_utilities.sass"
   
+  // Global BG
   aside#bg-image
     +bg-image
+
+  // Global Video
+  .video-container
+    display: block
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 0
+    height: 100vh
+    width: 100vw
+    overflow: hidden
+    opacity: 1
+    z-index: 0
+    video
+      position: absolute
+      min-width: 100%
+      min-height: 100%
+      width: auto
+      height: auto
+      z-index: -1000
+      overflow: hidden
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      background-color: rgba(0,0,0,0)
 
 </style>

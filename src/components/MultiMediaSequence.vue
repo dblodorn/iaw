@@ -5,12 +5,17 @@
 </template>
 
 <script>
+  import videoSequenceFunc from '../js/video-sequence-func'
+  import VideoPlayer from './VideoPlayer.vue'
   export default {
     name: 'multi-media-sequence',
     props: [
       'sequencesrc',
       'transition'
     ],
+    components: {
+      VideoPlayer
+    },
     data () {
       return {}
     },
@@ -24,13 +29,5 @@
 </script>
 
 <style lang="sass" scoped>
-  
-  video
-    transition-property: opacity
-    transition-timing-function: ease
-    opacity: 0
-  
-  .video-visible
-    opacity: 1
 
 </style>

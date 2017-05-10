@@ -23,7 +23,7 @@
 </script>
 
 <style lang="sass" scoped>
-  @import "../_sass/utilities/_utilities.sass"
+  @import "../_sass/_utilities.sass"
   
   audio
     position: fixed

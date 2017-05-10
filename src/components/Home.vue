@@ -1,5 +1,5 @@
 <template lang="pug">
-  section#landing
+  main(role="main")
     ul#bottles
       li(v-for="item in bottles")
         router-link(:style="{ 'background-image': 'url(' + item.btl + ')' }" v-bind:to="'/story/' + item.link")
@@ -34,8 +34,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-  
-  @import "../_sass/utilities/_utilities.sass"
+  @import "../_sass/_utilities.sass"
   
   ul#bottles
     width: 100vw
@@ -45,6 +44,7 @@ export default {
     left: 0
     display: flex
     flex-direction: row
+    z-index: 8000
     li
       width: 25%
       height: inherit

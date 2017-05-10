@@ -15,6 +15,9 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
+          postcss: [
+            require('postcss-cssnext')({ browsers: ['last 3 versions'] })
+          ],
           loaders: {
             'scss': 'vue-style-loader!css-loader!sass-loader',
             'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',

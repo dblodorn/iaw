@@ -15,9 +15,9 @@ export default {
 </script>
 
 <style lang="sass">
-  @import "../_sass/utilities/_utilities.sass"
+  @import "../_sass/_utilities.sass"
   
-  article
+  article#story-text
     position: relative
     width: 100%
     padding: $base-spacing
@@ -33,7 +33,7 @@ export default {
     p
       font-size: $base-spacing
   
-  article.left
+  article#story-text.left
     width: 50vw
     align-self: flex-end
     border-left: $border
