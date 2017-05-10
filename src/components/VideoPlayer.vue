@@ -1,30 +1,16 @@
 <template lang="pug">
-  ul#video-sequence-player(:data-transition-length="transition")
-    li.video-container(v-for="(video, index) in videos" :id="'video-frame-' + index")
-      video(:id="'video-' + index" :style="{ transitionDuration: transition + 'ms' }")
-        source(:src="video.src")
+  video(:id="'video-' + index" :style="{ transitionDuration: transitiontime + 'ms' }")
+    source(:src="videourl")
 </template>
 
 <script>
-  import videoSequenceFunc from '../js/video-sequence-func'
   export default {
     name: 'video-player',
     props: [
-      'videos',
-      'transition'
-    ],
-    data () {
-      return {}
-    },
-    mounted: function () {
-      console.log('video mounted')
-      const videoSequence = document.getElementById('video-sequence-player')
-      setTimeout(() => {  
-        if(videoSequence) { 
-          videoSequenceFunc(videoSequence)
-        }
-      }, 25)
-    }
+      'index',
+      'transitiontime',
+      'videourl'
+    ]
   }
 </script>
 

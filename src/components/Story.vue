@@ -1,10 +1,10 @@
 <template lang="pug">
-  section#story
-    #loading(v-if="loading")
-      h1 Loading...
+  main(role="main")
+    #loader-wrapper(v-if="loading")
+      #loader
     div(v-if="error" class="error") 
       h1 {{ error }}
-    div(v-if="post" class="content")
+    #story-content(v-if="post" class="content")
       StoryText(v-bind:text="post")
       StoryMedia(v-if="post.media" v-bind:media="post")
 </template>
@@ -12,7 +12,6 @@
 <script>
   import StoryText from './StoryText.vue'
   import StoryMedia from './StoryMedia.vue'
-
   export default {
     name: 'story',
     components: {
@@ -52,15 +51,15 @@
 </script>
 
 <style lang="sass">
-  @import "../_sass/utilities/_utilities.sass"
+  @import "../_sass/_utilities.sass"
   
   .content
     display: flex
-    width: 100vw
     flex-direction: column
-
-  section,
-  #loading
+    width: 100vw
+    min-height: calc(100vh - #{$header-height})
+    
+  section#story
     position: relative
     width: 100vw
     min-height: calc(100vh - #{$header-height})
@@ -68,10 +67,46 @@
     flex-direction: row
     flex-wrap: wrap
 
-    #loading
-      background-color: $blue
-      position: absolute
-      top: 0
-      left: 0
+  // LOADER
+  @keyframes spin
+    0%
+      transform: rotate(360deg)
+    50%
+      transform: rotate(180deg)
+    100%
+      transform: rotate(0deg)
+  
+  @keyframes fade
+    0%
+      opacity: 0
+    5%
+      opacity: 0
+    50%
+      opacity: .5
+    90%
+      opacity: 0
+    100%
+      opacity: 0
+
+  #loader-wrapper
+    animation: fade 6000ms infinite linear
+    width: 100vw
+    height: 100vh
+    position: fixed
+    top: 0
+    left: 0
+    display: flex
+    justify-content: center
+    align-items: center
+    
+  #loader
+    width: 50vmin
+    height: 50vmin
+    border-radius: 25vw
+    border-left: 2.5vmin solid grey
+    border-right: 2.5vmin solid grey
+    border-top: 2.5vmin solid grey
+    border-bottom: 2.5vmin solid white
+    animation: spin 2000ms infinite linear
 
 </style>

@@ -63,7 +63,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-  @import "../_sass/utilities/_utilities.sass"
+  @import "../_sass/_utilities.sass"
   
   #search-drawer
     +transition(transform, 0.125s, ease-in)
@@ -73,7 +73,7 @@ export default {
     left: 0
     height: calc(100vh - #{$header-height})
     overflow: hidden
-    z-index: 2000
+    z-index: 9000
     
   #search-drawer.opened
     transform: translateX(0)
