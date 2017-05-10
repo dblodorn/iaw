@@ -14,7 +14,7 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
   @import "../_sass/_utilities.sass"
   
   article#story-text
