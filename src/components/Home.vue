@@ -1,18 +1,13 @@
 <template lang="pug">
   section#landing
-    SearchDrawer
     ul#bottles
       li(v-for="item in bottles")
         router-link(:style="{ 'background-image': 'url(' + item.btl + ')' }" v-bind:to="'/story/' + item.link")
 </template>
 
 <script>
-import SearchDrawer from './SearchDrawer.vue'
 export default {
   name: 'home',
-  components: {
-    SearchDrawer
-  },
   data () {
     return {
       bottles: [

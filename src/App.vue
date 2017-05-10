@@ -26,6 +26,11 @@ export default {
 <style lang="sass">
   @import "./_sass/main.sass"
   
+  #app
+    position: fixed
+    top: 0
+    left: 0
+
   main
     display: flex
     flex-wrap: wrap

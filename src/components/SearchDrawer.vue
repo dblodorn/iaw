@@ -4,7 +4,7 @@
       input(type="text" v-model="search" placeholder="Find your word…" @keyup.enter="report")
       .close-container(v-on:click="classToggle")
     ul.landing-links
-      li(v-for="item in filteredItems")
+      li(v-for="item in filteredItems" v-on:click="classRemove" )
         router-link(v-bind:to="'/story/' + item.nl") {{ item.nl }}
 </template>
 
@@ -42,10 +42,14 @@ export default {
       })
       if (links.length = 1) {
         this.$router.push({ path: '/story/' + links[0].nl })
+        $('#search-drawer').removeClass('opened')
       }
     },
     classToggle: function (event) {
       $('#search-drawer').toggleClass('opened')
+    },
+    classRemove: function (event) {
+      $('#search-drawer').removeClass('opened')
     }
   },
   computed: {
