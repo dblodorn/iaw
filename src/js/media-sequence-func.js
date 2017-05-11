@@ -19,6 +19,7 @@ export default function mediaSequenceFunc (playState) {
   }
 
   // Run the Slideshow if we Have Play = true
+  // Use data arttribue for slide type - not class.
   if(playState === true) {
     const slideShow = () => {
       if (i === (slideCount)) {
