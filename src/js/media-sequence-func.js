@@ -8,7 +8,6 @@ export default function mediaSequenceFunc (playState) {
       v = 0,
       slideArray = [],
       slide = document.querySelectorAll('.sequence-slide'),
-      timeoutGap = 2000,
       transitionTimer = () => {}
   
   const slideCount = slide.length
@@ -19,37 +18,31 @@ export default function mediaSequenceFunc (playState) {
     v++
   }
 
-  // Slide Play Func
-  const playSlide = (slideNo) => {
-    slideNo.classList.add('slide-visible')
-    if (hasClass(slideNo, 'video-sequence-slide')) {
-      let video = slideNo.children[0].lastChild,
-          videoMs = Math.floor(video.duration * 1000)
-          video.play()
-      // Pause Set
-      console.log(videoMs)
-    } else if (hasClass(slideNo, 'static-sequence-slide')) {
-      // Pause Set
-      let staticSlideTimeout = slideNo.children[0].attributes[1].nodeValue
-      console.log(staticSlideTimeout)
-    }
-  }
-
   // Run the Slideshow if we Have Play = true
   if(playState === true) {
-    playSlide(slideArray[0])
     const slideShow = () => {
-      if (i === (slideCount - 1)) {
+      if (i === (slideCount)) {
         transitionTimer = () => {
           return false
         }
       } else {
-        transitionTimer(
-          setTimeout(() => {
-            playSlide(slideArray[i])
-            slideShow()
-          }, (timeoutGap))
-        )
+        const transitionTimerFunc = (timeoutGap) => {
+          transitionTimer(
+            setTimeout(() => {
+              slideShow()
+            }, (timeoutGap))
+          )
+        }
+        // Set Timeout
+        let slideNo = slideArray[i]
+        slideNo.classList.add('slide-visible')
+        if (hasClass(slideNo, 'video-sequence-slide')) {
+          let video = slideNo.children[0].lastChild
+          transitionTimerFunc(Math.floor(video.duration * 1000))
+          video.play()          
+        } else if (hasClass(slideNo, 'static-sequence-slide')) {
+          transitionTimerFunc(slideNo.children[0].attributes[1].nodeValue)
+        }
         i++
       }
     }
