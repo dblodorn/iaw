@@ -1,25 +1,17 @@
-// Build A video sequence
-// Test with Safari + other browsers
-import hasClass from './has-class'
-
-export default function mediaSequenceFunc (playState) { 
-  
+// Build A MultiMedia sequence
+// TO DO - Set API For Transitions ETC.
+export default function mediaSequenceFunc (playState,slideClass) {
   let i = 0,
       v = 0,
       slideArray = [],
-      slide = document.querySelectorAll('.sequence-slide'),
+      slide = document.querySelectorAll(slideClass),
       transitionTimer = () => {}
-  
   const slideCount = slide.length
-
-  // Store Slides in Object
   while(v < slideCount) {
     slideArray.push(slide[v])
     v++
   }
-
   // Run the Slideshow if we Have Play = true
-  // Use data arttribue for slide type - not class.
   if(playState === true) {
     const slideShow = () => {
       if (i === (slideCount)) {
@@ -34,14 +26,15 @@ export default function mediaSequenceFunc (playState) {
             }, (timeoutGap))
           )
         }
-        // Set Timeout
+        // Set Timeout on slide transition.
         let slideNo = slideArray[i]
+        let slideType = slideNo.dataset.slideType
         slideNo.classList.add('slide-visible')
-        if (hasClass(slideNo, 'video-sequence-slide')) {
+        if (slideType === 'video') {
           let video = slideNo.children[0].lastChild
           transitionTimerFunc(Math.floor(video.duration * 1000))
           video.play()          
-        } else if (hasClass(slideNo, 'static-sequence-slide')) {
+        } else if (slideType === 'static') {
           transitionTimerFunc(slideNo.children[0].attributes[1].nodeValue)
         }
         i++
