@@ -10,8 +10,13 @@
       "src": "https://s3-us-west-2.amazonaws.com/14-forty/iaw/ally-long.mp4"
     },{
       "type": "static",
-      "title": "Slide 2",
-      "copy": "Lorem Ipsum Dolor dodladfsfsdfa."
+      "content": {
+        "slide_class": "full-slide",
+        "headline": "Slide 2",
+        "copy": "Lorem Ipsum Dolor dodladfsfsdfa.",
+        "background": "https://s3-us-west-2.amazonaws.com/14-forty/iaw/homeless-tents.jpg",
+        "timeout_length": "2000"
+      }
     },{
       "type": "video",
       "src": "https://s3-us-west-1.amazonaws.com/db13/satisfying/sv-01.mp4"
