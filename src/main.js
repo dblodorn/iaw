@@ -28,7 +28,17 @@ const router = new VueRouter({
   ]
 })
 
-new Vue({
-	router,
-  el: '#vue-app'
-})
+const loader =
+
+window.onload = () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('fade-out')
+    setTimeout(() => {
+      document.getElementById('loader-wrapper').remove()
+      new Vue({
+        router,
+        el: '#vue-app'
+      })
+    }, 600)
+  }, 1500)
+}
