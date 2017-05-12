@@ -67,46 +67,4 @@
     flex-direction: row
     flex-wrap: wrap
 
-  // LOADER
-  @keyframes spin
-    0%
-      transform: rotate(360deg)
-    50%
-      transform: rotate(180deg)
-    100%
-      transform: rotate(0deg)
-  
-  @keyframes fade
-    0%
-      opacity: 0
-    5%
-      opacity: 0
-    50%
-      opacity: .5
-    90%
-      opacity: 0
-    100%
-      opacity: 0
-
-  #loader-wrapper
-    animation: fade 6000ms infinite linear
-    width: 100vw
-    height: 100vh
-    position: fixed
-    top: 0
-    left: 0
-    display: flex
-    justify-content: center
-    align-items: center
-    
-  #loader
-    width: 50vmin
-    height: 50vmin
-    border-radius: 25vw
-    border-left: 2.5vmin solid grey
-    border-right: 2.5vmin solid grey
-    border-top: 2.5vmin solid grey
-    border-bottom: 2.5vmin solid white
-    animation: spin 2000ms infinite linear
-
 </style>

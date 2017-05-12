@@ -7,13 +7,69 @@
     <script src="https://use.typekit.net/ovg5wvx.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
     <style>
-      @font-face {
-        font-family: 'fff-regular';
-        src: url('/assets/fonts/fff-gdi.woff') format('woff');
+      @keyframes spin {
+        0% {
+          transform: rotate(360deg);
+        }
+        50% {
+          transform: rotate(180deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
       }
-      @font-face {
-        font-family: 'fff-italic';
-        src: url('/assets/fonts/fff-italic-gdi.woff') format('woff');
+      @keyframes fade {
+        0% {
+          opacity: 0;
+        }
+        5% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 0.5;
+        }
+        90% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      @keyframes fade-out {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      .fade-out {
+        opacity: 0!important;
+      }
+      #loader-wrapper {
+        animation: fade 6000ms infinite linear;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #loader {
+        transition: opacity 500ms ease-out;
+        width: 50vmin;
+        height: 50vmin;
+        border-radius: 25vw;
+        border-left: 2.5vmin solid grey;
+        border-right: 2.5vmin solid grey;
+        border-top: 2.5vmin solid grey;
+        border-bottom: 2.5vmin solid white;
+        animation: spin 2000ms infinite linear;
+        opacity: 1;
+        display: block;
+        position: relative;
       }
     </style>
   </head>
@@ -21,6 +77,7 @@
     <div id="vue-app">
       <router-view></router-view>
     </div>
+    <div id="loader-wrapper"><div id="loader"></div></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="/dist/build.js" defer></script>
   </body>
