@@ -4,6 +4,7 @@
   "media": "true",
   "media_player": "multi-media-sequence",
   "transition_time": "1250",
+  "layout": "full-screen",
   "sequence": [
     {
       "type": "video",

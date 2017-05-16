@@ -1,4 +1,91 @@
 {
   "subhead": "Elderly homeless lorem ipsum...",
-  "copy": "Lorem ipsum dolor sit amet."
+  "copy": "Lorem ipsum dolor sit amet.",
+  "media": "true",
+  "media_player": "multi-media-sequence",
+  "transition_time": "1250",
+  "layout": "tiled",
+  "sequence": [
+    {
+      "type": "static",
+      "content": {
+        "slide_class": "full-slide",
+        "headline": "Slide 2",
+        "copy": "Lorem Ipsum Dolor dodladfsfsdfa.",
+        "background": "https://s3-us-west-2.amazonaws.com/14-forty/iaw/homeless-tents.jpg",
+        "background_color": "red",
+        "timeout_length": "200"
+      }
+    },{
+      "type": "static",
+      "content": {
+        "slide_class": "full-slide",
+        "headline": "Slide 2",
+        "copy": "Lorem Ipsum Dolor dodladfsfsdfa.",
+        "background": "https://s3-us-west-2.amazonaws.com/14-forty/iaw/homeless-tents.jpg",
+        "background_color": "red",
+        "timeout_length": "200"
+      }
+    },{
+      "type": "static",
+      "content": {
+        "slide_class": "full-slide",
+        "headline": "Slide 2",
+        "copy": "Lorem Ipsum Dolor dodladfsfsdfa.",
+        "background": "https://s3-us-west-2.amazonaws.com/14-forty/iaw/homeless-tents.jpg",
+        "background_color": "red",
+        "timeout_length": "200"
+      }
+    },{
+      "type": "static",
+      "content": {
+        "slide_class": "full-slide",
+        "headline": "Slide 4",
+        "copy": "Lorem Ipsum Dolor dodladfsfsdfa. ablkja;ljskgfsdl;fldsk;aflkj;dasfl;dsajl;fkl;jasdfljk.",
+        "background": "",
+        "background_color": "red",
+        "timeout_length": "100"
+      }
+    },{
+      "type": "static",
+      "content": {
+        "slide_class": "full-slide",
+        "headline": "Slide 2",
+        "copy": "Lorem Ipsum Dolor dodladfsfsdfa.",
+        "background": "https://s3-us-west-2.amazonaws.com/14-forty/iaw/homeless-tents.jpg",
+        "background_color": "red",
+        "timeout_length": "100"
+      }
+    },{
+      "type": "static",
+      "content": {
+        "slide_class": "full-slide",
+        "headline": "Slide 4",
+        "copy": "Lorem Ipsum Dolor dodladfsfsdfa. ablkja;ljskgfsdl;fldsk;aflkj;dasfl;dsajl;fkl;jasdfljk.",
+        "background": "",
+        "background_color": "red",
+        "timeout_length": "100"
+      }
+    },{
+      "type": "static",
+      "content": {
+        "slide_class": "full-slide",
+        "headline": "Slide 2",
+        "copy": "Lorem Ipsum Dolor dodladfsfsdfa.",
+        "background": "https://s3-us-west-2.amazonaws.com/14-forty/iaw/homeless-tents.jpg",
+        "background_color": "red",
+        "timeout_length": "100"
+      }
+    },{
+      "type": "static",
+      "content": {
+        "slide_class": "full-slide",
+        "headline": "Slide 4",
+        "copy": "Lorem Ipsum Dolor dodladfsfsdfa. ablkja;ljskgfsdl;fldsk;aflkj;dasfl;dsajl;fkl;jasdfljk.",
+        "background": "",
+        "background_color": "red",
+        "timeout_length": "100"
+      }
+    }
+  ]
 }

@@ -3,7 +3,7 @@
     aside#bg-image(v-if="media.background" :style="{ 'background-image': 'url(' + media.background + ')' }")
     AudioPlayer(v-if="media.audio" :audiosrc="media.audio")
     VideoSequence(v-if="media.media_player == 'video-sequence'" :videos="media.videos" :transition="media.transition_time")
-    MultiMediaSequence(v-if="media.media_player == 'multi-media-sequence'" :sequencesrc="media.sequence" :transition="media.transition_time")
+    MultiMediaSequence(v-if="media.media_player == 'multi-media-sequence'" :sequencesrc="media.sequence" :transition="media.transition_time" :layout="media.layout")
     VideoPlayerLoop(v-if="media.media_player == 'video-loop'" :videosrc="media.video_src")
 </template>
 

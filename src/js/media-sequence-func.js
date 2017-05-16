@@ -15,10 +15,12 @@ export default function mediaSequenceFunc (playState,slideClass) {
   if(playState === true) {
     const slideShow = () => {
       if (i === (slideCount)) {
+        slideArray[slideCount - 1].classList.remove('slide-visible')
         transitionTimer = () => {
           return false
         }
       } else {
+        // Length Of Slide
         const transitionTimerFunc = (timeoutGap) => {
           transitionTimer(
             setTimeout(() => {
@@ -27,9 +29,16 @@ export default function mediaSequenceFunc (playState,slideClass) {
           )
         }
         // Set Timeout on slide transition.
-        let slideNo = slideArray[i]
-        let slideType = slideNo.dataset.slideType
+        let slideNo   = slideArray[i],
+            prevSlide = slideArray[i - 1],
+            slideType = slideNo.dataset.slideType
+        
         slideNo.classList.add('slide-visible')
+        
+        if(prevSlide != undefined) {
+          prevSlide.classList.remove('slide-visible')
+        }
+
         if (slideType === 'video') {
           let video = slideNo.children[0].lastChild
           transitionTimerFunc(Math.floor(video.duration * 1000))
@@ -37,6 +46,7 @@ export default function mediaSequenceFunc (playState,slideClass) {
         } else if (slideType === 'static') {
           transitionTimerFunc(slideNo.children[0].attributes[1].nodeValue)
         }
+        
         i++
       }
     }

@@ -1,5 +1,5 @@
 <template lang="pug">
-  section#multi-media-sequence-container(:data-transition-length="transition")
+  section#multi-media-sequence-container(:data-transition-length="transition" :class="layout")
     ul#multi-media-sequence-wrapper
       li.sequence-slide(v-for="(slide, index) in sequencesrc" :id="'sequence-frame-' + index" :data-slide-type="slide.type")
         .static-container(v-if="slide.type == 'static'" :data-timeout-length="slide.content.timeout_length")
@@ -16,7 +16,8 @@
     name: 'multi-media-sequence',
     props: [
       'sequencesrc',
-      'transition'
+      'transition',
+      'layout'
     ],
     components: {
       VideoPlayer,
@@ -37,14 +38,33 @@
 
 <style lang="sass" scoped>
   @import "../_sass/_utilities.sass"
-  section#multi-media-sequence-container,
-  ul#multi-media-sequence-wrapper,
-  li.sequence-slide
+  
+  section#multi-media-sequence-container
     +full-size
+
+  section#multi-media-sequence-container.full-screen
+    ul#multi-media-sequence-wrapper,
+    li.sequence-slide
+      +full-size
+  
+  section#multi-media-sequence-container.tiled
+    ul#multi-media-sequence-wrapper
+      display: flex
+      width: 100vw
+      flex-direction: row
+      flex-wrap: wrap
+      li
+        width: 50vw
+        height: 25vw
+        overflow: hidden!important
+        display: flex
+        position: relative
+
   // SlideShow
   .slide-visible
     *
       opacity: 1
   .slide-hidden
     opacity: 0
+
 </style>
